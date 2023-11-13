@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using movieProject.Model;
 using MoviesDotNetCore.Model;
 using Neo4j.Driver;
 
@@ -11,6 +12,8 @@ public interface IMovieRepository
 {
     Task<Movie> FindByTitle(string title);
     Task<List<Movie>> Search(string search);
+    Task<List<Actor>> RelatedActors(string search);
+
 }
 
 public class MovieRepository : IMovieRepository
@@ -97,5 +100,10 @@ public class MovieRepository : IMovieRepository
     private static string Database()
     {
         return Environment.GetEnvironmentVariable("NEO4J_DATABASE") ?? "movies";
+    }
+
+    public Task<List<Actor>> RelatedActors(string search)
+    {
+        throw new NotImplementedException();
     }
 }
