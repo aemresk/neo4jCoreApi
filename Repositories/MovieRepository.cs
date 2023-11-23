@@ -52,7 +52,14 @@ public class MovieRepository : IMovieRepository
             ));
         });
     }
-
+    public async Task<Movie> FindByActor(string actor)
+    {
+     if (actor == "favicon.ico")
+            return null;
+        
+        await using var session = _driver.AsyncSession(WithDatabase);
+        //Search From Actor Name
+    }
     public async Task<List<Movie>> Search(string search)
     {
         await using var session = _driver.AsyncSession(WithDatabase);
